@@ -61,21 +61,13 @@ model = Sequential()
 model.add(Dense(50, input_dim=42, activation='relu'))
 model.add(Dense(40, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
-# Compile model
 sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='binary_crossentropy', optimizer=sgd, metrics=['accuracy'])
-# Fit the model
-av = model.evaluate(x_test, y_test)
-
 model.fit(x_train,y_train, epochs=1000, batch_size=10)
-# evaluate the model
 
 predictions = model.predict_classes(x_test)
-# round predictions
 print(predictions)
 
-print(x_test)
-print(y_test)
 # clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(2,), random_state=1)
 # clf.fit(x_train, pd.DataFrame(y_train).values.ravel())
 #
